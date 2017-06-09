@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Teste de inserção de valores</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/stylesheets/vendors.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/stylesheets/algaworks.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/layout/stylesheets/application.css}" />
+
+</head>
+<body>
+
+
+	<div class="container-fluid">
+
+		<form method="POST" class="form-vertical  js-form-loading"
+			th:object="${customer}">
+
+
+			<div class="form-group">
+				<label for="firstname">Nome</label> <input
+					id="firstname" type="text" class="form-control" th:field="*{firstname}" />
+			</div>
+			
+			<div class="form-group">
+				<label for="lastname">LastName</label> 
+				<input id="lastname" type="text" class="form-control" th:field="*{lastname}" />
+			</div>
+
+			<div class="form-group">
+				<button class="btn  btn-primary" type="submit">Salvar</button>
+			</div>
+
+		</form>
+	</div>
+
+	<script th:src="@{/layout/javascripts/vendors.min.js}"></script>
+	<script th:src="@{/layout/javascripts/algaworks.min.js}"></script>
+
+</body>
+</html>

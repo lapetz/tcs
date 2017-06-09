@@ -1,0 +1,127 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head>
+
+<body>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container"></div>
+<br>
+<br>
+<div id="temp-solo-ar" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+	<script type="text/javascript" charset="utf-8">
+	Highcharts.chart('container', {
+
+	    title: {
+	        text: 'Solar Employment Growth by Sector, 2010-2016'
+	    },
+
+	    subtitle: {
+	        text: 'Source: thesolarfoundation.com'
+	    },
+
+	    yAxis: {
+	        title: {
+	            text: 'Number of Employees'
+	        }
+	    },
+	    legend: {
+	        layout: 'vertical',
+	        align: 'right',
+	        verticalAlign: 'middle'
+	    },
+
+	    plotOptions: {
+	        series: {
+	            pointStart: 0
+	        }
+	    },
+
+	    series: [{
+	        name: 'Installation',
+	        data: [7, 8, 7, 6.8, 7.5, 6, 5, 5.5]
+	    }]
+
+	});
+	
+	
+	//Gráfico TEMPERATURA SOLO AR
+	//
+	//
+	Highcharts.chart('temp-solo-ar', {
+    chart: {
+        type: 'spline'
+    },
+    title: {
+        text: 'Temperatura x Umidade do Solo x Umidade do Ar'
+    },
+    subtitle: {
+        text: 'Cultura de Laranjas - Pelotas-RS'
+    },
+    xAxis: {
+        categories: ['13:30', '14:00', '14:30', '15:00', '15:30:', '16:00',
+            '16:30', '17:00', '17:30', '18:00', '18:30', '19:00']
+    },
+    yAxis: {
+        title: {
+            text: 'Variação'
+        },
+        labels: {
+            formatter: function () {
+                return this.value + '°';
+            }
+        }
+    },
+    tooltip: {
+        crosshairs: true,
+        shared: true
+    },
+    plotOptions: {
+        spline: {
+            marker: {
+                radius: 4,
+                lineColor: '#666666',
+                lineWidth: 1
+            }
+        }
+    },
+    series: [{
+        name: 'Umidade do Ar',
+        marker: {
+            symbol: 'square'
+        },
+        data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, {
+            y: 26.5,
+            marker: {
+                symbol: 'url(https://www.highcharts.com/samples/graphics/sun.png)'
+            }
+        }, 23.3, 18.3, 13.9, 9.6]
+
+    }, {
+        name: 'Umidade do Solo',
+        marker: {
+            symbol: 'diamond'
+        },
+        data: [{
+            y: 3.9, //local onde será colocado a imagem
+            marker: {
+                symbol: 'url(https://www.highcharts.com/samples/graphics/snow.png)'
+            }
+        }, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+    }, {
+        name: 'Temperatura',
+        marker: {
+            symbol: 'circle'
+        },
+        data: [{
+            y: 0,
+        }, 8, 9, 10, 11.9, 15.2, 7.0, 15.6, 14.9, 13, 11, 7]
+    }]
+});
+</script>
+</body>
+</html>
