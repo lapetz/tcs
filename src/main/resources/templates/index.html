@@ -13,7 +13,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 <script async="true" defer="true"
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAibUlW-4M2jTfdoyvEQ4tP9DfVP_pJkME&amp;libraries=visualization&amp;callback=initMapTemp"> </script>
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAibUlW-4M2jTfdoyvEQ4tP9DfVP_pJkME&amp;libraries=visualization&amp;callback=initMap"> </script>
 
 <style>
 /* Always set the map height explicitly to define the size of the div
@@ -175,7 +175,7 @@ Highcharts.chart('container', {
 
 var map, heatmap, gradient;
 
-function initMapTemp() {
+function initMap() {
 	map = new google.maps.Map(document.getElementById('mapTemp'), {
     zoom: 15,
     center: {lat: -26.907390, lng: -49.086807},
