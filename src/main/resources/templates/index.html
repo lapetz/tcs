@@ -38,22 +38,7 @@ html, body {
 
 
 	<div id="container"></div>
-	<div id="grad1"
-		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
-		Temperatura</div>
-	<div id="mapTemp"></div>
-	<div id="grad1"
-		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
-		pH</div>
-	<div id="mapPH"></div>
-	<div id="grad1"
-		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
-		Umidade do Ar</div>
-	<div id="mapUA"></div>
-	<div id="grad1"
-		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
-		Umidade do Solo</div>
-	<div id="mapUS"></div>
+
 
 
 	<br></br>
@@ -187,101 +172,6 @@ function initMap() {
     map: map
   });
   
-  heatmap.set('radius', heatmap.get('radius') ? null : 30);
-  
-  initMapPh();
-}
-
-function initMapPh() {
-	map = new google.maps.Map(document.getElementById('mapPH'), {
-	    zoom: 15,
-	    center: {lat: -26.907390, lng: -49.086807},
-	    mapTypeId: 'satellite'
-	  });
-
-	  heatmap = new google.maps.visualization.HeatmapLayer({
-	    data: getPoints(),
-	    map: map
-	});
-   gradient = [
-	    'rgba(0, 255, 255, 0)',
-	    'rgba(0, 255, 255, 1)',
-	    'rgba(0, 191, 255, 1)',
-	    'rgba(0, 127, 255, 1)',
-	    'rgba(0, 63, 255, 1)',
-	    'rgba(0, 0, 255, 1)',
-	    'rgba(0, 0, 223, 1)',
-	    'rgba(0, 0, 191, 1)',
-	    'rgba(0, 0, 159, 1)',
-	    'rgba(0, 0, 127, 1)',
-	    'rgba(63, 0, 91, 1)',
-	    'rgba(127, 0, 63, 1)',
-	    'rgba(191, 0, 31, 1)',
-	    'rgba(255, 0, 0, 1)'
-	  ]
-	  heatmap.set('gradient', heatmap.get('gradient') ? null : gradient)
-	  heatmap.set('radius', heatmap.get('radius') ? null : 30);
-	  
-	initMapUA();
-}
-
-function initMapUA() {
-	map = new google.maps.Map(document.getElementById('mapUA'), {
-	    zoom: 15,
-	    center: {lat: -26.907390, lng: -49.086807},
-	    mapTypeId: 'satellite'
-	  });
-
-	  heatmap = new google.maps.visualization.HeatmapLayer({
-	    data: getPoints(),
-	    map: map
-	});
-   gradient = [
-	    'rgba(0, 255, 255, 0)',
-	    'rgba(0, 255, 255, 1)',
-	    'rgba(0, 170, 255, 1)',
-	    'rgba(0, 50, 255, 1)',
-	    'rgba(0, 50, 255, 1)',
-	    'rgba(0, 0, 30, 1)',
-	    'rgba(0, 0, 20, 1)',
-	    'rgba(2, 0, 20, 1)',
-	    'rgba(2, 0, 50, 1)',
-	    'rgba(0, 0, 120, 1)',
-	    'rgba(63, 0, 91, 1)',
-	    'rgba(40, 255, 63, 1)',
-	    'rgba(170, 2, 31, 1)',
-	    'rgba(10, 50, 0, 1)'
-	  ]
-	  heatmap.set('gradient', heatmap.get('gradient') ? null : gradient)
-	  heatmap.set('radius', heatmap.get('radius') ? null : 30);
-	  
-	  initMapUS();
-}
-
-function initMapUS() {
-	map = new google.maps.Map(document.getElementById('mapUS'), {
-	    zoom: 15,
-	    center: {lat: -26.907390, lng: -49.086807},
-	    mapTypeId: 'satellite'
-	  });
-
-	  heatmap = new google.maps.visualization.HeatmapLayer({
-	    data: getPoints(),
-	    map: map
-	});
-   gradient = [
-	    'rgba(225, 225, 51, 0)',
-	    'rgba(0, 120, 120, 1)',
-	    'rgba(0, 50, 120, 1)',
-	    'rgba(0, 10, 120, 1)',
-	    'rgba(0, 10, 120, 1)',
-	    'rgba(63, 225, 91, 1)',
-	    'rgba(40, 225, 63, 1)',
-	    'rgba(255, 225, 31, 1)',
-	    'rgba(255, 225, 0, 1)'
-	  ]
-	  heatmap.set('gradient', heatmap.get('gradient') ? null : gradient)
-	  heatmap.set('radius', heatmap.get('radius') ? null : 30);
 }
 
 function getPoints() {
