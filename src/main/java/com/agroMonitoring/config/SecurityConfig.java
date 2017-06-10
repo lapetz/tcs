@@ -24,8 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers("/vinhos").hasRole("PESQUISAR_VINHO")
-			.antMatchers("/vinhos/**").hasRole("CADASTRAR_VINHO")
+			.antMatchers("/setvalues").permitAll()
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
