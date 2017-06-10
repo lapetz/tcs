@@ -10,22 +10,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>  
-<script async="true" defer="true" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAibUlW-4M2jTfdoyvEQ4tP9DfVP_pJkME&amp;libraries=visualization&amp;callback=initMapTemp"> </script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+<script async="true" defer="true"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAibUlW-4M2jTfdoyvEQ4tP9DfVP_pJkME&amp;libraries=visualization&amp;callback=initMapTemp"> </script>
 
 <style>
-      /* Always set the map height explicitly to define the size of the div
+/* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-      #mapTemp,#mapPH,#mapUA,#mapUS {
-        height: 500px;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+#mapTemp, #mapPH, #mapUA, #mapUS {
+	height: 500px;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+</style>
 
 
 <title>Dados da cultura</title>
@@ -35,25 +37,56 @@
 
 
 
-<div id="container"></div>
-	<div id="grad1" style="text-align:center;margin:auto;color:#030303;font-size:30px;font-weight:550;padding-top:105px;">
-Temperatura</div>
-    <div id="mapTemp"></div>
-    	<div id="grad1" style="text-align:center;margin:auto;color:#030303;font-size:30px;font-weight:550;padding-top:105px;">
-pH</div>
-    <div id="mapPH"></div>
-    	<div id="grad1" style="text-align:center;margin:auto;color:#030303;font-size:30px;font-weight:550;padding-top:105px;">
-Umidade do Ar</div>
-    <div id="mapUA"></div>
-    	<div id="grad1" style="text-align:center;margin:auto;color:#030303;font-size:30px;font-weight:550;padding-top:105px;">
-Umidade do Solo</div>
-    <div id="mapUS"></div>
+	<div id="container"></div>
+	<div id="grad1"
+		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
+		Temperatura</div>
+	<div id="mapTemp"></div>
+	<div id="grad1"
+		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
+		pH</div>
+	<div id="mapPH"></div>
+	<div id="grad1"
+		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
+		Umidade do Ar</div>
+	<div id="mapUA"></div>
+	<div id="grad1"
+		style="text-align: center; margin: auto; color: #030303; font-size: 30px; font-weight: 550; padding-top: 105px;">
+		Umidade do Solo</div>
+	<div id="mapUS"></div>
 
-<script th:inline="javascript">
+
+	<br></br>
+	<br></br>
+	<br></br>
+	<br></br>
+	<br></br>
+
+	<br></br>
+	<br></br>
+	<table>
+		<tr>
+			<th>Temperatura</th>
+			<th>pH</th>
+			<th>Umidade do Solo</th>
+			<th>Umidade do Ar</th>
+			<th>Alerta de incendio</th>
+
+		</tr>
+		<tr th:each="lista : ${list}">
+			<td th:text="${lista.vlTemperatura}"></td>
+			<td th:text="${lista.vlPh}"></td>
+			<td th:text="${lista.umidadeSolo}"></td>
+			<td th:text="${lista.umidadeAr}"></td>
+			<td th:text="${lista.ieIncendio}"></td>
+		</tr>
+	</table>
+
+	<script th:inline="javascript">
 /*<![CDATA[*/
 
 var list = [[${list}]];
-var mediaDia = [[${media0}]];
+var mediaDia0 = [[${mediaHoje}]];
 var mediaDia1 = [[${media1}]]; // 1 dia atrás
 var mediaDia2 = [[${media2}]]; // 2 dias atrás
 var mediaDia3 = [[${media3}]]; // 3 dias atrás
@@ -82,7 +115,7 @@ Highcharts.chart('container', {
         	moment().subtract(3, 'd').format('dddd'), 
         	moment().subtract(2, 'd').format('dddd'), 
         	moment().subtract(1, 'd').format('dddd'),
-        	'today'
+        	'Today'
         	],
         title: {
             text: null
@@ -107,7 +140,7 @@ Highcharts.chart('container', {
             	mediaDia3[0] ? mediaDia3[0].vlPh : mediaDia3[0],
             	mediaDia2[0] ? mediaDia2[0].vlPh : mediaDia2[0],
             	mediaDia1[0] ? mediaDia1[0].vlPh : mediaDia1[0],
-            	mediaDia[0] ? mediaDia[0].vlPh : mediaDia[0]]
+            			mediaDia0[0] ? mediaDia0[0].vlPh : mediaDia0[0]]
     }, {
         name: 'Temperatura',
         data: [mediaDia6[0] ? mediaDia6[0].vlTemperatura : mediaDia6[0], 
@@ -116,7 +149,7 @@ Highcharts.chart('container', {
                 mediaDia3[0] ? mediaDia3[0].vlTemperatura : mediaDia3[0],
                 mediaDia2[0] ? mediaDia2[0].vlTemperatura : mediaDia2[0],
                 mediaDia1[0] ? mediaDia1[0].vlTemperatura : mediaDia1[0],
-                mediaDia[0] ? mediaDia[0].vlTemperatura : mediaDia[0]]
+                		mediaDia0[0] ? mediaDia0[0].vlTemperatura : mediaDia0[0]]
     }, {
         name: 'Umidade do Ar',
         data: [mediaDia6[0] ? mediaDia6[0].umidadeAr : mediaDia6[0], 
@@ -125,7 +158,7 @@ Highcharts.chart('container', {
                 mediaDia3[0] ? mediaDia3[0].umidadeAr : mediaDia3[0],
                 mediaDia2[0] ? mediaDia2[0].umidadeAr : mediaDia2[0],
                 mediaDia1[0] ? mediaDia1[0].umidadeAr : mediaDia1[0],
-                mediaDia[0] ? mediaDia[0].umidadeAr : mediaDia[0]]
+                		mediaDia0[0] ? mediaDia0[0].umidadeAr : mediaDia0[0]]
     }, {
         name: 'Umidade do Solo',
         data: [mediaDia6[0] ? mediaDia6[0].umidadeSolo : mediaDia6[0], 
@@ -134,7 +167,7 @@ Highcharts.chart('container', {
                 mediaDia3[0] ? mediaDia3[0].umidadeSolo : mediaDia3[0],
                 mediaDia2[0] ? mediaDia2[0].umidadeSolo : mediaDia2[0],
                 mediaDia1[0] ? mediaDia1[0].umidadeSolo : mediaDia1[0],
-                mediaDia[0] ? mediaDia[0].umidadeSolo : mediaDia[0]]
+                		mediaDia0[0] ? mediaDia0[0].umidadeSolo : mediaDia0[0]]
     }]
 
 });

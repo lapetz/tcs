@@ -15,7 +15,7 @@ public class Index {
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		model.addAttribute("media0", pcRepo.obterMediaDia(0));
+		model.addAttribute("mediaHoje", pcRepo.obterMediaHoje());
 		model.addAttribute("media1", pcRepo.obterMediaDia(1));
 		model.addAttribute("media2", pcRepo.obterMediaDia(2));
 		model.addAttribute("media3", pcRepo.obterMediaDia(3));

@@ -8,15 +8,15 @@ import org.springframework.data.repository.query.Param;
 
 import com.agroMonitoring.model.PontoColeta;
 
-
 public interface PontoColetaRepository extends JpaRepository<PontoColeta, Long> {
-	
-	@Query(nativeQuery = true, value="select *, 	avg(vl_temperatura), " +
-		" avg(vl_ph), 			" 	+
-        " avg(umidade_ar), 		" 	+
-        " avg(umidade_solo)		" 	+
-        " from 	valor_coletado 	" 	+
-        " where	DATE_FORMAT(DATE_SUB(sysdate(),INTERVAL :dsDia DAY),'%d/%m/%Y')  = DATE_FORMAT(dt_atualizacao,'%d/%m/%Y');")
-	public List<PontoColeta> 
-	   obterMediaDia(@Param("dsDia") int qtDia);
+
+	@Query(nativeQuery = true, value = "select *, 	avg(vl_temperatura), " + " avg(vl_ph), 			"
+			+ " avg(umidade_ar), 		" + " avg(umidade_solo)		" + " from 	valor_coletado 	"
+			+ " where	DATE_FORMAT(DATE_SUB(sysdate(),INTERVAL :dsDia DAY),'%d/%m/%Y')  = DATE_FORMAT(dt_atualizacao,'%d/%m/%Y');")
+	public List<PontoColeta> obterMediaDia(@Param("dsDia") int qtDia);
+
+	@Query(nativeQuery = true, value = "       select valor_coletado.*, avg(vl_temperatura) as vlMedia" +
+	" from 	valor_coletado " +
+    " where	DATE_FORMAT(sysdate(),'%d/%m/%Y')  = DATE_FORMAT(dt_atualizacao,'%d/%m/%Y') ;")
+	public List<PontoColeta> obterMediaHoje();
 }
